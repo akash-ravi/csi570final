@@ -1,0 +1,26 @@
+# macOS specific files
+.DS_Store
+._*
+.Spotlight-V100
+.Trashes
+
+# Python specific files
+*.pyc
+*.pyo
+*.pyd
+__pycache__/
+*.env
+venv/
+.env/
+
+# Log files
+*.log
+
+# IDE specific files
+.vscode/
+.idea/
+
+# Temporary files
+*~
+*.swp
+tmp/

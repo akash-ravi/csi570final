@@ -92,5 +92,5 @@ def alpha(c1: str, c2: str) -> int:
 # Add a main function to test the utility
 if __name__ == "__main__":
     # Replace this path with the path to your input file
-    input_file = "/Users/akashravi/Desktop/Algo/csi570final/CSCI570_Project/SampleTestCases/input1.txt"
+    input_file = "CSCI570_Project/SampleTestCases/input1.txt"  # relative path
     s, t = input_string_generator(input_file)

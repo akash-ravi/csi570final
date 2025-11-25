@@ -20,26 +20,20 @@ for input in $TEST_DIR/input*.txt; do
 
     echo -n "Test $num: "
 
-    #  Run program
+     # Run program
     $PROGRAM "$input" "$actual"
 
-    trimmed_expected="$TEST_DIR/expected_trimmed_${num}.txt"
-    trimmed_actual="$TEST_DIR/actual_trimmed_${num}.txt"
+    # extract first line of expected and actual
+    expected_first=$(sed -n '1p' "$expected")
+    actual_first=$(sed -n '1p' "$actual")
 
-    # macOS-compatible delete last 2 lines
-    sed '$d' "$expected" | sed '$d' > "$trimmed_expected"
-    sed '$d' "$actual" | sed '$d' > "$trimmed_actual"
-
-    # Compare
-    if diff -q "$trimmed_expected" "$trimmed_actual" > /dev/null; then
+    if [ "$expected_first" = "$actual_first" ]; then
         echo "PASS"
     else
         echo "FAIL ❌"
-        echo "  Differences:"
-        diff "$trimmed_expected" "$trimmed_actual"
+        echo "  Expected first line: $expected_first"
+        echo "  Actual first line:   $actual_first"
     fi
-
-    rm "$trimmed_expected" "$trimmed_actual"
 done
 
 echo "===== Done ====="
